@@ -42,9 +42,19 @@ public class PokemonController {
     }
 
     @DeleteMapping("/deletar/name/{name}")
-    public ResponseEntity<Pokemon> deleteByname(@PathVariable("name")String name){
+    public ResponseEntity<Pokemon> deletedByname(@PathVariable("name")String name){
 
         return pokemonService.deletePokemonByName(name);
+    }
+
+    @GetMapping("/weight/{weight}")
+    public ResponseEntity<Pokemon> findByWeight(@PathVariable("weight")int weight){
+        return pokemonService.findByWeight(weight);
+    }
+
+    @GetMapping("/weight/{weight}")
+    public ResponseEntity<Pokemon> findByHeight(@PathVariable("height")int height){
+        return pokemonService.findByHeight(height);
     }
 
 }

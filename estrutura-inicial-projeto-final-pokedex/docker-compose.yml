@@ -1,11 +1,7 @@
 version: '3.8'
-services:      
+services:
     spring-generate-database-new:
-        container_name: pokedex-database
-        image: postgres:12.5-alpine
+        container_name: mongoDB
+        image: mongo:4.4.6
         ports:
-            - "5432:5432"
-        environment:
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: 123456
-            POSTGRES_DB: pokedex-db
+            - "27017:27017"

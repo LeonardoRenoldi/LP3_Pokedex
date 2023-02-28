@@ -1,7 +1,6 @@
 package com.pokedex.service;
 
 import com.pokedex.model.Pokemon;
-import com.pokedex.repository.DeleteRepository;
 import com.pokedex.repository.PokemonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,8 +18,7 @@ public class PokemonService {
 
     @Autowired
     private PokemonRepository pokemonRepository;
-    @Autowired
-    private DeleteRepository deleteRepository;
+
 
     public Pokemon getPokemon(Integer id){
         //return pokemonRepository.findById(id).orElseThrow(() -> new RuntimeException("Id " + id + " inexistente"));
@@ -73,6 +71,16 @@ public class PokemonService {
             return null;
     }
 
+    public ResponseEntity<Pokemon>findByWeight(@PathVariable("weight")int weight){
+        Pokemon pokemon= pokemonRepository.findByWeight(weight).get(weight);
+        return null;
+    }
+
+    public ResponseEntity<Pokemon>findByHeight(@PathVariable("height")int height){
+        Pokemon pokemon= pokemonRepository.findByHeight(height).get(height);
+        return null;
+    }
+
 
 
     public List<Pokemon> getPokemonByWeight(double weight) {
@@ -97,6 +105,10 @@ public class PokemonService {
 
     public void deletePokemon(int id) {
         pokemonRepository.deleteById(id);
+    }
+
+    public void deletePokemonName(String name) {
+        pokemonRepository.deleteByName(name);
     }
 
    public List<Pokemon> getAllPokemon() {

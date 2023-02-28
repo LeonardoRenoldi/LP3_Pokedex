@@ -1,22 +1,9 @@
+tmdb-external-api: https://pokeapi.co/api/v2/pokemon
 server:
   servlet:
     context-path: /pokedex
-
+  port: '8081'
 spring:
-  datasource:
-    driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/pokedex-db
-    username: postgres
-    password: 123456
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        jdbc:
-          lob:
-            non-contextual-creation: true
-  profiles:
-    include: 'integration'
+  data:
+    mongodb:
+      uri: mongodb://localhost/pokedex-database
